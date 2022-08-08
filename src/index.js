@@ -4,7 +4,7 @@ import chalk from "chalk";
 import dotenv from "dotenv";
 import signUpRouter from "../routers/SignUpRouter.js";
 import signInRouter from "../routers/SignInRouter.js";
-
+import urlRouter from "../routers/URLRouters.js";
 
 
 dotenv.config();
@@ -14,6 +14,7 @@ app.use(json());
 
 app.use(signUpRouter)
 app.use(signInRouter)
+app.use(urlRouter)
 
 
 const port = process.env.PORT || 4000
