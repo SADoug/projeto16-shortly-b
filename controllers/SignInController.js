@@ -7,8 +7,7 @@ export async function SignInCliente(req, res) {
   const token = v4();
   console.log(req.body);
   try {
-    console.log("cheguei aqui") //não chega aqui
-    //Validação de email e senha
+   
     const usuarioID = await db.query(`SELECT * FROM users WHERE email = $1;`, [email]);
     if (!bcrypt.compareSync(password, usuarioID.rows[0].password) ) {
       return res.sendStatus(401); 

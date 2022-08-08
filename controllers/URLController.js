@@ -16,7 +16,7 @@ export async function addURL(req, res) {
     if (header.rowCount === 0) {
       return res.sendStatus(404);
     }
-    console.log(header.rows[0])
+
     await db.query(`
     INSERT INTO shortlys ("userId",url,"shortlyUrl","contagem")
     VALUES($1,$2,$3,$4);
@@ -26,7 +26,7 @@ export async function addURL(req, res) {
       shortly,
       0
     ]);
-    console.log({ shortUrl: shortly })
+
     res.status(201).send({ shortUrl: shortly })
   } catch (error) {
     res.status(422).send(error)
@@ -36,7 +36,7 @@ export async function addURL(req, res) {
 
 export async function getURLId(req, res) {
   const { id } = req.params;
-  console.log(id)
+
 
   if (isNaN(parseInt(id))) {
     return res.sendStatus(400); // bad request
@@ -44,14 +44,14 @@ export async function getURLId(req, res) {
 
   try {
     const result = await db.query(`SELECT * FROM shortlys WHERE id = $1;`, [id]);
-    console.log(result.rows)
+
     if (result.rows.length === 0) {
       return res.sendStatus(404); // not found
     }
 
     res.status(200).send(result.rows[0]);
   } catch (error) {
-    console.log(error);
+
     res.sendStatus(500); // internal server error
   }
 }
@@ -66,11 +66,13 @@ export async function getURLIdOpen(req, res) {
     if (result.rowCount === 0) {
       return res.sendStatus(404); // not found
     }
-    contagem = result.rows[0].contagem + 1;
+    contagem = parseInt(result.rows[0].contagem) + 1;
+
     const contagemup = await db.query(`UPDATE shortlys SET contagem = ${contagem} WHERE "shortlyUrl" = $1`, [shortUrl]);
+
     res.redirect(result.rows[0].url);
   } catch (error) {
-    console.log(error);
+
     res.sendStatus(500); // internal server error
   }
 }
@@ -98,7 +100,7 @@ export async function deleteUrl(req, res) {
       , [urlId])
     res.sendStatus(204) //Sucesso
   } catch (err) {
-    console.log(err)
+
     res.sendStatus(500) //Erro
   }
 }

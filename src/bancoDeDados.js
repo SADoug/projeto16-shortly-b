@@ -15,6 +15,8 @@ const db = new Pool(databaseConfig);
 
 export default db;
 
+
+/*Testando localmente*/
 /*
 const { Pool } = pg;
 const db = new Pool({

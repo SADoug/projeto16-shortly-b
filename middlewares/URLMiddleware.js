@@ -1,7 +1,7 @@
 import joi from "joi";
 
 export async function URLValidação(req, res, next) {
-    console.log(req.body.url)
+
     const novaURL = req.body;
     const clientSchema = joi.object({
         url: joi.string().min(1).required()
@@ -12,5 +12,6 @@ export async function URLValidação(req, res, next) {
         res.status(400).send(validation.error.details);
         return;
     }
+
     next();
 }
