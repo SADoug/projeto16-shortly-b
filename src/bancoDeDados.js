@@ -2,7 +2,7 @@ import pg from "pg";
 import dotenv from "dotenv";
 
 dotenv.config();
-
+/*
 const { Pool } = pg;
 const databaseConfig = {
     connectionString: process.env.DATABASE_URL,
@@ -14,10 +14,10 @@ const databaseConfig = {
 const db = new Pool(databaseConfig);
 
 export default db;
-
+/*
 
 /*Testando localmente*/
-/*
+
 const { Pool } = pg;
 const db = new Pool({
   host: process.env.DB_HOST,
@@ -28,4 +28,3 @@ const db = new Pool({
  
 });
 export default db;
-*/

@@ -17,7 +17,7 @@ export async function userShortenGet(req, res) {
     if (procurarUsuario.rows[0].length === 0) {
       return res.sendStatus(404);
     }
-   
+   console.log(procurarUsuario.rows[0]);
     const result = await db.query(`
         SELECT *
         FROM shortlys
