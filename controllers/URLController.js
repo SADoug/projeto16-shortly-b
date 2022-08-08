@@ -50,6 +50,7 @@ export async function getURLId(req, res) {
     }
 
     res.status(200).send(result.rows[0]);
+    console.log(result.rows[0]);
   } catch (error) {
 
     res.sendStatus(500); // internal server error
