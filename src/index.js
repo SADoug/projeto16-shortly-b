@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import signUpRouter from "../routers/SignUpRouter.js";
 import signInRouter from "../routers/SignInRouter.js";
 import urlRouter from "../routers/URLRouters.js";
+import userRouter from "../routers/UsersRouter.js";
 
 
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(json());
 app.use(signUpRouter)
 app.use(signInRouter)
 app.use(urlRouter)
+app.use(userRouter)
 
 
 const port = process.env.PORT || 4000
